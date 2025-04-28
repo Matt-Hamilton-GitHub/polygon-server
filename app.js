@@ -7,7 +7,8 @@ const helmet = require('helmet');
 
 const connectDB = require('./config/mongoDB')
 const spillTeaStoryRoutes = require('./routes/storyRoutes');
-
+const cabinlyRoutes = require('./routes/cabinlyRoutes')
+const aiAssistantRoutes = require('./routes/aiAssistant')
 const app = express()
 
 // Connect to database
@@ -20,6 +21,6 @@ app.use(express.json());
 app.use(helmet());
 
 
-app.use('/api/v1/', spillTeaStoryRoutes)
+app.use('/api/v1/', spillTeaStoryRoutes, cabinlyRoutes, aiAssistantRoutes)
 
 module.exports = app; 

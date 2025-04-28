@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const {getAllStories, getStoryById, createStory, authenticateUser, createUser, getStoriesByUser } = require('../controller/SpillTeaController')
-const { authenticateRequest }  = require('../middlewares/authMiddleware')
+const { authenticateRequest }  = require('../middlewares/authMiddleware');
+
 
 // GET 
 router.get('/stories', authenticateRequest, getAllStories);
