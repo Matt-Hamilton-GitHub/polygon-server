@@ -15,14 +15,14 @@ export const getAllProducts = async (req: Request, res: Response) => {
 
 export const getProductById = async (req: Request, res: Response) => {
   try {
-    const prod_id = req.query.id;
+    const {id} = req.query;
 
-    if (typeof prod_id !== 'string') {
+    if (typeof id !== 'string') {
       res.status(400).send('Missing or invalid product ID');
       return;
     }
 
-    const product = await Product.findById(prod_id);
+    const product = await Product.findById(id);
 
     if (!product) {
       res.status(404).send('Product not found');
