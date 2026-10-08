@@ -26,7 +26,7 @@ const getProductById = async (req, res) => {
             res.status(400).send('Missing or invalid product ID');
             return;
         }
-        const product = await SingleProduct_1.default.find({ id: id });
+        const product = await SingleProduct_1.default.findOne({ id: id });
         if (!product) {
             res.status(404).send('Product not found');
             return;
