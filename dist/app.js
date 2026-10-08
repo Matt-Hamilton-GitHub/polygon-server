@@ -14,6 +14,6 @@ const app = (0, express_1.default)();
 app.use((0, cors_1.default)());
 app.use((0, helmet_1.default)()); // sets secure HTTP headers
 app.use(express_1.default.json());
-app.use('/api/v1/', oaklineRoutes_1.default);
+app.use('/api/v2/', oaklineRoutes_1.default);
 exports.default = app;
 //# sourceMappingURL=app.js.map

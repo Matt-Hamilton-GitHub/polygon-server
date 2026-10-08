@@ -1,7 +1,11 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getProductById = exports.getAllProducts = void 0;
 const Product = require("../models/oakline/Product");
+const SingleProduct_1 = __importDefault(require("../models/oakline/SingleProduct"));
 const getAllProducts = async (req, res) => {
     console.log('get all products @ oakline called');
     try {
@@ -17,12 +21,13 @@ const getAllProducts = async (req, res) => {
 exports.getAllProducts = getAllProducts;
 const getProductById = async (req, res) => {
     try {
-        const prod_id = req.query.id;
-        if (typeof prod_id !== 'string') {
+        const { id } = req.query;
+        const prod_id = id;
+        if (typeof id !== 'string') {
             res.status(400).send('Missing or invalid product ID');
             return;
         }
-        const product = await Product.findById(prod_id);
+        const product = await SingleProduct_1.default.find({ id: prod_id });
         if (!product) {
             res.status(404).send('Product not found');
             return;
