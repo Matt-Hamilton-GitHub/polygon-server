@@ -105,7 +105,7 @@ stproductSchema.index({ featured: 1 });
 stproductSchema.index({ price: 1 });
 stproductSchema.index({ name: 'text', description: 'text' }); // for text search
 
-// Third argument pins the collection name to "products"
+// Third argument pins the collection name to "single-stock-product"
 const STProduct = model<ISTProduct>('STProduct', stproductSchema, 'single-stock-product');
 
 export default STProduct;
